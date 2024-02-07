@@ -38,7 +38,7 @@ public class Calendar {
 			{
 			     if(dayOfWeek==1)//is not sunday
 			      {
-	                 System.out.println(dayOfMonth+"/"+month+"/"+year+" "+"sunday");
+	                 System.out.println(dayOfMonth+"/"+month+"/"+year+" "+"Sunday");
 			      }
 			else
 			{
