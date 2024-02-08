@@ -27,7 +27,7 @@ public class LoanCalc {
 		System.out.printf("%.2f", bruteForceSolver(loan,r,n, epsilon));
 		System.out.println();
 		System.out.println("number of iterations: " + iterationCounter);
- 
+       iterationCounter=0;
 		// Computes the periodical payment using bisection search
 	
 		System.out.print("Periodical payment, using bi-section search: ");
@@ -46,9 +46,10 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	double eachyearpayment=1;
 		double payment=loan/n,temploan=loan;
-		iterationCounter=-1;
+		iterationCounter=0;
        while(eachyearpayment>epsilon)
-	   {
+	   {	
+		
 		for(int i=0;i<n;i++)// eachyear iteratetion
 		{
           eachyearpayment=(temploan-payment)*rate;
@@ -56,7 +57,11 @@ public class LoanCalc {
 		}
 		temploan=loan;
 		payment+=epsilon;
-		iterationCounter++;
+		if(eachyearpayment<epsilon)
+		{
+			break;
+		}
+	iterationCounter++;
 	}
 	return payment;
     	
@@ -74,7 +79,7 @@ public class LoanCalc {
 		double eachyearpayment=-1;
 		double h=loan/4,l=loan/n,g=(h+l)/2;
 		double temploan=loan;
-		iterationCounter=0;
+		iterationCounter=1;
       while(Math.abs(eachyearpayment)>epsilon)
 	  {
 		for(int i=0;i<n;i++)// eachyear iteratetion
@@ -96,6 +101,7 @@ public class LoanCalc {
 		iterationCounter++;
 		
 		}
+
 		return g;
     }
 	
